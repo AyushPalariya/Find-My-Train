@@ -321,3 +321,114 @@ footer {
         width: 35px;
     }
 }
+
+/* Live Tracking Styles */
+.live-tracking {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #ced4da;
+}
+
+.tracking-bar-container {
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    position: relative;
+    margin: 25px 0 10px;
+}
+
+.tracking-bar-fill {
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+}
+
+.train-icon-live {
+    position: absolute;
+    top: -15px;
+    transform: translateX(-50%);
+    background: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    color: var(--accent-color);
+    z-index: 2;
+    transition: left 1s ease-in-out;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.status-on-time { background-color: #d4edda; color: #155724; }
+.status-delayed { background-color: #fff3cd; color: #856404; }
+.status-arrived { background-color: #d1ecf1; color: #0c5460; }
+.status-not-started { background-color: #e2e3e5; color: #383d41; }
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.8rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Stop Markers */
+.stop-marker {
+    position: absolute;
+    top: -5px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.stop-dot {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border: 2px solid #ced4da;
+    border-radius: 50%;
+}
+
+.stop-name {
+    font-size: 0.65rem;
+    color: #6c757d;
+    margin-top: 18px;
+    white-space: nowrap;
+    background: rgba(255,255,255,0.8);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.stop-marker:hover .stop-dot {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.stop-marker:hover .stop-name {
+    color: var(--dark-color);
+    font-weight: 700;
+}
