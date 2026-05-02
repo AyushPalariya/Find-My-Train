@@ -1,0 +1,9 @@
+
+
+services:
+  trainUI:
+    build: .
+    ports:
+      - "5450:80"
+    container_name: trainUI
+    restart: unless-stopped

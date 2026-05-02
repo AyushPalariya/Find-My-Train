@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: TT.Company.Train.TrainApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.31 s -- in TT.Company.Train.TrainApplicationTests

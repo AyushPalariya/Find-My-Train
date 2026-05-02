@@ -1,0 +1,50 @@
+#it is used to run the multiple container together using yml file..
+#why it is used.
+#it manage the multi-service app like:SB,MySql,Redis
+version: "3.8"
+
+services:
+  app1:
+    build: .
+    container_name: springboot-app
+    restart: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8082:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/findmytrain1
+      DB_USERNAME: root
+      DB_PASSWORD: Ayush@2003
+      SERVER_PORT: 8080
+    networks:
+      - app-network
+
+
+  db:
+    image: mysql:8
+    container_name: mysql-db
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: Ayush@2003
+      MYSQL_DATABASE: findmytrain1
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      retries: 5
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
+
+
+
+volumes:
+  mysql-data:
+
+networks:
+  app-network:
